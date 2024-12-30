@@ -1,3 +1,5 @@
 export function EditStudent(){
-    return <h1>wsadsad</h1>
+    return (
+        <h1>Student Management System</h1>
+    )
 }
