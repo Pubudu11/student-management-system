@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import {toast } from 'react-toastify';
 import { getStudentById, updateStudent } from "../services/api";
 import { Student } from "../types/student";
 
@@ -7,21 +8,21 @@ const EditStudent: React.FC = () => {
     const { id } = useParams<{ id: string }>(); // Extract the student ID from the route
     const navigate = useNavigate();
 
-    const [student, setStudent] = useState<Omit<Student, "id"> & { id?: number }>({
+    const [student, setStudent] = useState<Omit<Student, "id"> & { id?: string }>({
         firstName: "",
         lastName: "",
         email: "",
         department: "",
-        yearofEnrollment: new Date().getFullYear(),
+        yearofEnrollment: 0,
     });
 
     useEffect(() => {
         if (id) {
-            fetchStudentDetails(parseInt(id, 10));
+            fetchStudentDetails(id);
         }
     }, [id]);
 
-    const fetchStudentDetails = async (studentId: number) => {
+    const fetchStudentDetails = async (studentId: string) => {
         try {
             const response = await getStudentById(studentId);
             setStudent({
@@ -29,7 +30,7 @@ const EditStudent: React.FC = () => {
                 lastName: response.data.lastName,
                 email: response.data.email,
                 department: response.data.department,
-                yearofEnrollment: response.data.yearOfEnrollment,
+                yearofEnrollment: response.data.yearofEnrollment,
             });
         } catch (error) {
             console.error("Failed to fetch student details:", error);
@@ -44,10 +45,12 @@ const EditStudent: React.FC = () => {
         e.preventDefault();
         if (id) {
             try {
-                await updateStudent(parseInt(id, 10), { ...student, id: parseInt(id, 10) });
+                await updateStudent(id, { ...student, id: parseInt(id, 10) });
                 navigate("/"); // Redirect to the Student List page
+                toast.success('Student Updated')
             } catch (error) {
                 console.error("Failed to update student:", error);
+                toast.error('Failed to update student'+ error)
             }
         }
     };

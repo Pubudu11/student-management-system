@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import {toast } from 'react-toastify';
 import { addStudent } from "../services/api";
 import { Student } from "../types/student";
 
@@ -21,6 +22,7 @@ const AddStudent: React.FC = () => {
         e.preventDefault();
         try {
             await addStudent(student as Student);
+            toast.success('Student Added')
             navigate("/");
         } catch (error) {
             console.error("Failed to add student:", error);

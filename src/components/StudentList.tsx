@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { toast } from 'react-toastify';
 import { getStudents, deleteStudent } from "../services/api";
 import { Student } from "../types/student";
 
@@ -15,7 +16,7 @@ const StudentList: React.FC = () => {
             const response = await getStudents();
             setStudents(response.data);
             console.log(response.data);
-        } catch (error) {
+            } catch (error) {
             console.error("Failed to fetch students:", error);
         }
     };
@@ -23,6 +24,7 @@ const StudentList: React.FC = () => {
     const handleDelete = async (id: number) => {
         try {
             await deleteStudent(id);
+            toast.success('Student Deleted')
             fetchStudents();
         } catch (error) {
             console.error("Failed to delete student:", error);
