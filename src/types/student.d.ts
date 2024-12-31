@@ -4,6 +4,6 @@ export interface Student {
     lastName: string;
     email: string;
     department: string;
-    yearOfEnrollment: number;
+    yearofEnrollment: number;
   }
   

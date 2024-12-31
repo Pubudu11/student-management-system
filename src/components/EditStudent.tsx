@@ -12,7 +12,7 @@ const EditStudent: React.FC = () => {
         lastName: "",
         email: "",
         department: "",
-        yearOfEnrollment: new Date().getFullYear(),
+        yearofEnrollment: new Date().getFullYear(),
     });
 
     useEffect(() => {
@@ -29,7 +29,7 @@ const EditStudent: React.FC = () => {
                 lastName: response.data.lastName,
                 email: response.data.email,
                 department: response.data.department,
-                yearOfEnrollment: response.data.yearOfEnrollment,
+                yearofEnrollment: response.data.yearOfEnrollment,
             });
         } catch (error) {
             console.error("Failed to fetch student details:", error);
@@ -106,7 +106,7 @@ const EditStudent: React.FC = () => {
                         name="yearOfEnrollment"
                         type="number"
                         className="form-control"
-                        value={student.yearOfEnrollment}
+                        value={student.yearofEnrollment}
                         onChange={handleChange}
                         required
                     />

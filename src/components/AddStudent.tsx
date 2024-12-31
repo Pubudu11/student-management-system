@@ -9,7 +9,7 @@ const AddStudent: React.FC = () => {
         lastName: "",
         email: "",
         department: "",
-        yearOfEnrollment: 2023,
+        yearofEnrollment: 0,
     });
     const navigate = useNavigate();
 
@@ -70,7 +70,7 @@ const AddStudent: React.FC = () => {
                 <div className="mb-3">
                     <label className="form-label">Year of Enrollment</label>
                     <input
-                        name="yearOfEnrollment"
+                        name="yearofEnrollment"
                         type="number"
                         className="form-control"
                         onChange={handleChange}

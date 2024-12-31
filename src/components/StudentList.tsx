@@ -51,10 +51,10 @@ const StudentList: React.FC = () => {
                         <td>{`${student.firstName} ${student.lastName}`}</td>
                         <td>{student.email}</td>
                         <td>{student.department}</td>
-                        <td>{student.yearOfEnrollment}</td>
+                        <td>{student.yearofEnrollment}</td>
                         <td>
                             <Link
-                                to={`/edit-student/${student.id}`}
+                                to={`/edit/${student.id}`}
                                 className="btn btn-info btn-sm me-2"
                             >
                                 Edit
