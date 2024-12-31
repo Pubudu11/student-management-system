@@ -14,6 +14,7 @@ const StudentList: React.FC = () => {
         try {
             const response = await getStudents();
             setStudents(response.data);
+            console.log(response.data);
         } catch (error) {
             console.error("Failed to fetch students:", error);
         }
@@ -54,7 +55,7 @@ const StudentList: React.FC = () => {
                         <td>
                             <Link
                                 to={`/edit-student/${student.id}`}
-                                className="btn btn-warning btn-sm me-2"
+                                className="btn btn-info btn-sm me-2"
                             >
                                 Edit
                             </Link>
