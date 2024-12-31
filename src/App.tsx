@@ -1,9 +1,9 @@
 import { Routes, Route } from "react-router-dom"
 import { Container } from "react-bootstrap"
 import { Navbar } from "./components/Navbar"
-import{ StudentList } from "./components/StudentList"
-import{ AddStudent } from "./components/AddStudent"
-import{ EditStudent } from "./components/EditStudent"
+import StudentList from "./components/StudentList"
+import AddStudent from "./components/AddStudent"
+import EditStudent from "./components/EditStudent"
 
 function App() {
   return (
